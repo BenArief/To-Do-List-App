@@ -5,6 +5,12 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [loc, setLoc] = useState(true)
+
+  if(loc){
+    setLoc(false)
+    alert(`Sekarang hari ke-${count} kamu menggunakan React!`)
+  }
 
   return (
     <>
