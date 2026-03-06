@@ -1,41 +1,77 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-  const [loc, setLoc] = useState(true)
-
-  if(loc){
-    setLoc(false)
-    alert(`Sekarang hari ke-${count} kamu menggunakan React!`)
-  }
+export default function App() {
 
   return (
+      <div className="app">
+        <Header />
+        <Form />
+        <GroceryList />
+        <Footer />
+  </div>
+  )
+}
+
+function Header(){
+  return (
+    <h1>Catatan Belanjaku 📝</h1>
+  )
+}
+
+function Form(){
+  return (
+     <form className="add-form">
+            <h3>Hari ini belanja apa kita?</h3>
+            <div>
+              <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <input type="text" placeholder="nama barang..." />
+            </div>
+            <button>Tambah</button>
+      </form>
+  )
+}
+
+function GroceryList(){
+  return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+          <div className="list">
+          <ul>
+            <li>
+              <input type="checkbox" checked="true" />
+              <span style={{ textDecoration: 'line-through' }}>1 Kopi</span>
+              <button>&times;</button>
+            </li>
+            <li>
+              <input type="checkbox" />
+              <span>5 Gula Pasir</span>
+              <button>&times;</button>
+            </li>
+            <li>
+              <input type="checkbox" />
+              <span>3 Air Mineral</span>
+              <button>&times;</button>
+            </li>
+          </ul>
+        </div>
+        <div className="actions">
+          <select>
+            <option value="input">Urutkan berdasarkan urutan input</option>
+            <option value="name">Urutkan berdasarkan nama barang</option>
+            <option value="checked">Urutkan berdasarkan ceklis</option>
+          </select>
+          <button>Bersihkan Daftar</button>
+        </div>
     </>
   )
 }
 
-export default App
+function Footer(){
+  return (
+        <footer className="stats">Ada 10 barang di daftar belanjaan, 5 barang sudah dibeli (50%)</footer>
+  )
+}
